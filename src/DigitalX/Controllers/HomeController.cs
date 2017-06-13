@@ -17,6 +17,15 @@ namespace DigitalX.Controllers
             return View();
         }
 
+        public ActionResult Products()
+        {
+            ViewBag.Message = "List of Products.";
+
+            ViewBag.listProducts = psc.findAll();
+
+            return View();
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
