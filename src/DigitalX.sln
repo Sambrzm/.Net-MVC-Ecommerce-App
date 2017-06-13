@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalX", "DigitalX\DigitalX.csproj", "{F552C2B5-2366-4EB2-BB40-75C7AB1A5A19}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DA6186CE-01AD-4B25-980A-D7F1F9174466} = {DA6186CE-01AD-4B25-980A-D7F1F9174466}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary", "ClassLibrary\ClassLibrary.csproj", "{2EB7CC4F-A5FA-4FF3-82C9-35E85425BDE7}"
 EndProject

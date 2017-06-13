@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DigitalX.ServiceReference1;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,8 +9,11 @@ namespace DigitalX.Controllers
 {
     public class HomeController : Controller
     {
+        private ProductServiceClient psc = new ProductServiceClient();
+
         public ActionResult Index()
         {
+            ViewBag.topFive = psc.topFive();
             return View();
         }
 
