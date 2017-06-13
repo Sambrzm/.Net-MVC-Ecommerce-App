@@ -6,77 +6,63 @@
 
 <h2>Products</h2>
 
-
-<div class="row">
-    @foreach (var p in ViewBag.listProducts)
-    {
-        <div>@p.ProductID</div>
-    }
-</div>
-
-
-
-
-
-
-@*<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
-    <tr>
+    <tr>        
         <th>
-            @Html.DisplayNameFor(model => model.IsDiscontinued)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
+            @Html.DisplayNameFor(model => model.ProductName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ProductDescription)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ProductName)
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UnitsInStock)
+        </th>
+        
+        @*<th>
+            @Html.DisplayNameFor(model => model.IsDiscontinued)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.RetailerID)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.SubCategoryID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UnitsInStock)
-        </th>
+        </th>*@
+        
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
+@foreach (var item in ViewBag.listProducts) {
+    <tr>        
         <td>
-            @Html.DisplayFor(modelItem => item.IsDiscontinued)
+            @item.ProductName
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Price)
+            @item.ProductDescription
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ProductDescription)
+            @item.Price
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ProductName)
+            @item.UnitsInStock
+        </td>        
+
+        @*<td>
+        @item.IsDiscontinued
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.RetailerID)
+            @item.RetailerID
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.SubCategoryID)
-        </td>
+            @item.SubCategoryID
+        </td>*@
+        
         <td>
-            @Html.DisplayFor(modelItem => item.UnitsInStock)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ProductID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ProductID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ProductID })
+            @Html.ActionLink("Details", "Details", new { id=item.ProductID })
         </td>
     </tr>
 }
 
-</table>*@
+</table>
