@@ -15,37 +15,67 @@ namespace WcfServiceLibrary
 
         public Product find(int id)
         {
-            return dxe.Products.Single(p => p.ProductID == id);
+            try
+            {
+                return dxe.Products.Single(p => p.ProductID == id);
+            }
+            catch (Exception ex)
+            {
+                SetErrorDetails errorobj = new SetErrorDetails();
+                errorobj.ErrorName = "Something went wrong";
+                errorobj.ErrorDetails = ex.Message;
+                throw new FaultException<SetErrorDetails>(errorobj);
+            }
         }
 
         public List<Product> findAll()
         {
-            return dxe.Products.ToList();
+            try
+            {
+                return dxe.Products.ToList();
+            }
+            catch (Exception ex)
+            {
+                SetErrorDetails errorobj = new SetErrorDetails();
+                errorobj.ErrorName = "Something went wrong";
+                errorobj.ErrorDetails = ex.Message;
+                throw new FaultException<SetErrorDetails>(errorobj);
+            }
         }
 
         public List<Product> topFive()
         {
-            var top = (from p in dxe.Products
-                       from od in dxe.OrderDetails
-                       orderby od.Quantity descending
-                       where od.ProductID == p.ProductID
-                       //group od by p into pGroups
-                       select p
-                    //{
-                    //    p = pGroups.Key,
-                    //    numOrders = pGroups.Count()
-                    //}
-                    //).OrderByDescending(x => x.numOrders).Distinct().Take(5).Cast<Product>();
-                    ).Take(5);
-
-            if (!top.Any())
+            try
             {
-                var topPrice = (from p in dxe.Products
-                                orderby p.Price descending
-                                select p).Take(5);
-                return topPrice.ToList();
+                var top = (from p in dxe.Products
+                           from od in dxe.OrderDetails
+                           orderby od.Quantity descending
+                           where od.ProductID == p.ProductID
+                           //group od by p into pGroups
+                           select p
+                        //{
+                        //    p = pGroups.Key,
+                        //    numOrders = pGroups.Count()
+                        //}
+                        //).OrderByDescending(x => x.numOrders).Distinct().Take(5).Cast<Product>();
+                        ).Take(5);
+
+                if (!top.Any())
+                {
+                    var topPrice = (from p in dxe.Products
+                                    orderby p.Price descending
+                                    select p).Take(5);
+                    return topPrice.ToList();
+                }
+                return top.ToList();
             }
-            return top.ToList();
+            catch (Exception ex)
+            {
+                SetErrorDetails errorobj = new SetErrorDetails();
+                errorobj.ErrorName = "Something went wrong";
+                errorobj.ErrorDetails = ex.Message;
+                throw new FaultException<SetErrorDetails>(errorobj);
+            }
         }
     }
 }
