@@ -42,6 +42,9 @@
         <dd>
             <img src="data:image;base64,@Convert.ToBase64String(Model.Picture)" />
         </dd>
+        <dd>
+            @Html.ActionLink("Add to Cart", "AddToCart", "Cart", new { id = Model.ProductID }, null)
+        </dd>
 
         @*<dt>
             @Html.DisplayNameFor(model => model.IsDiscontinued)

@@ -1,0 +1,59 @@
+﻿@model IEnumerable<DigitalX.ServiceReference1.Product>
+
+@{
+    ViewBag.Title = "Cart";
+}
+@using DigitalX.Controllers;
+
+<h2>Cart</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UnitsInStock)
+        </th>
+        <th>
+            Quantity
+        </th>
+        <th>
+            Sub Total
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in (List<Item>)Session["cart"])
+    {
+        <tr>
+            <td>
+                @item.Product.ProductName
+            </td>
+            <td>
+                @item.Product.ProductDescription
+            </td>
+            <td>
+                @item.Product.UnitsInStock
+            </td>
+            <td>
+                @item.Quantity
+            </td>
+            <td>
+                @(item.Product.Price * item.Quantity)
+            </td>
+
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.Product.ProductID })
+            </td>
+        </tr>
+    }
+
+</table>
+<hr />
+@Html.ActionLink("Continue Shopping", "Index", "Home")
+
