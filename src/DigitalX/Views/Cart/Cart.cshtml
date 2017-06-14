@@ -10,10 +10,16 @@
 <table class="table">
     <tr>
         <th>
+            Option
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.ProductName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ProductDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.UnitsInStock)
@@ -32,10 +38,16 @@
     {
         <tr>
             <td>
+                @Html.ActionLink("Remove", "Remove", "Cart", new { id = item.Product.ProductID }, null)
+            </td>
+            <td>
                 @item.Product.ProductName
             </td>
             <td>
                 @item.Product.ProductDescription
+            </td>
+            <td>
+                @item.Product.Price
             </td>
             <td>
                 @item.Product.UnitsInStock

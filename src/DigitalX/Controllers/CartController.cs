@@ -25,6 +25,15 @@ namespace DigitalX.Controllers
             return -1;
         }
 
+        public ActionResult Remove(int id)
+        {
+            int index = isExisting(id);
+            List<Item> cart = (List<Item>)Session["cart"];
+            cart.RemoveAt(index);
+            Session["cart"] = cart;
+            return View("cart");
+        }
+
         public ActionResult AddToCart(int id)
         {
             if (Session["cart"] == null)
