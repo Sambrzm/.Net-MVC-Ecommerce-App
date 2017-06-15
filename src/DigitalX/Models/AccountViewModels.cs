@@ -5,9 +5,10 @@ namespace DigitalX.Models
 {
     public class ExternalLoginConfirmationViewModel
     {
-        //[Required]
-        //[Display(Name = "Email")]
-        //public string Email { get; set; }
+        [Required]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+
         [Required]
         [Display(Name = "Username")]
         public string Username { get; set; }
@@ -44,9 +45,10 @@ namespace DigitalX.Models
 
     public class ForgotViewModel
     {
-        //[Required]
-        //[Display(Name = "Email")]
-        //public string Email { get; set; }
+        [Required]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+
         [Required]
         [Display(Name = "Username")]
         public string Username { get; set; }
@@ -54,10 +56,10 @@ namespace DigitalX.Models
 
     public class LoginViewModel
     {
-        //[Required]
-        //[Display(Name = "Email")]
-        //[EmailAddress]
-        //public string Email { get; set; }
+        [Required]
+        [Display(Name = "Email")]
+        [EmailAddress]
+        public string Email { get; set; }
 
         [Required]
         [Display(Name = "Username")]
@@ -75,10 +77,10 @@ namespace DigitalX.Models
 
     public class RegisterViewModel
     {
-        //[Required]
-        //[EmailAddress]
-        //[Display(Name = "Email")]
-        //public string Email { get; set; }
+        [Required]
+        [EmailAddress]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
 
         [Required]
         [Display(Name = "Username")]
@@ -98,14 +100,10 @@ namespace DigitalX.Models
 
     public class ResetPasswordViewModel
     {
-        //[Required]
-        //[EmailAddress]
-        //[Display(Name = "Email")]
-        //public string Email { get; set; }
-
         [Required]
-        [Display(Name = "Username")]
-        public string Username { get; set; }
+        [EmailAddress]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
@@ -123,13 +121,9 @@ namespace DigitalX.Models
 
     public class ForgotPasswordViewModel
     {
-        //[Required]
-        //[EmailAddress]
-        //[Display(Name = "Email")]
-        //public string Email { get; set; }
-
         [Required]
-        [Display(Name = "Username")]
-        public string Username { get; set; }
+        [EmailAddress]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
     }
 }
