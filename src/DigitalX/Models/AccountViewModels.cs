@@ -83,6 +83,8 @@ namespace DigitalX.Models
         public string Email { get; set; }
 
         [Required]
+        [StringLength(8, MinimumLength = 3, ErrorMessage = "Username must be between 3 and 8 characters long" )]
+        [RegularExpression("^[A-Za-z].*", ErrorMessage = "Username must start with a letter")]
         [Display(Name = "Username")]
         public string Username { get; set; }
 
