@@ -12,9 +12,10 @@
     @foreach (var p in ViewBag.topFive)
     {
         <div class="col-md-2">
+            <img src="data:image;base64,@Convert.ToBase64String(p.Picture)" />
             <h2>@p.ProductName</h2>
             <h4>@p.Price</h4>
-            <img src="data:image;base64,@Convert.ToBase64String(p.Picture)" />
+            
         </div>
     }
 </div>

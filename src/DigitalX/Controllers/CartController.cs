@@ -12,8 +12,15 @@ namespace DigitalX.Controllers
         private ProductServiceClient psc = new ProductServiceClient();
 
         public ActionResult Index()
-        {
-            return View();
+        {            
+            if (Session["cart"] == null)
+            {
+                return View("EmptyCart");
+            }
+            else
+            {
+                return View("Cart");
+            }                
         }
 
         private int isExisting(int id)
