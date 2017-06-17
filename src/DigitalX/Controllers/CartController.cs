@@ -41,6 +41,7 @@ namespace DigitalX.Controllers
             return View("cart");
         }
 
+        [Authorize]
         public ActionResult AddToCart(int id)
         {
             if (Session["cart"] == null)
