@@ -1,31 +1,41 @@
-﻿using ClassLibrary;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using ClassLibrary;
 
 namespace WcfServiceLibrary
 {
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerCall, ConcurrencyMode = ConcurrencyMode.Single)]
-    public class ProductService : IProductService
-    {        
+    public class WCFService : IWCFService
+    {
         private DigitalXDBEntities dxe = new DigitalXDBEntities();
+
+        public List<Customer> allCustomers()
+        {
+            return dxe.Customers.ToList();
+        }
+
+        public int CreateCustomer(Customer request)
+        {
+            ClassLibrary.Customer c = new ClassLibrary.Customer()
+            {
+                FirstName = request.FirstName,
+                LastName = request.LastName,
+                UserName = request.UserName
+            };
+            dxe.Customers.Add(c);
+            dxe.SaveChanges();
+            return c.CustomerID;
+        }
 
         public Product find(int id)
         {
-            try
-            {
+           
                 return dxe.Products.Single(p => p.ProductID == id);
-            }
-            catch (Exception ex)
-            {
-                SetErrorDetails errorobj = new SetErrorDetails();
-                errorobj.ErrorName = "Something went wrong";
-                errorobj.ErrorDetails = ex.Message;
-                throw new FaultException<SetErrorDetails>(errorobj);
-            }
+            
         }
 
         public List<Product> findAll()
@@ -43,10 +53,14 @@ namespace WcfServiceLibrary
             }
         }
 
+        public Customer findCust(string username)
+        {
+            //return dxe.Customers.Single(c => c.UserName = username);
+            throw new Exception();
+        }
+
         public List<Product> topFive()
         {
-            try
-            {
                 var top = (from p in dxe.Products
                            from od in dxe.OrderDetails
                            orderby od.Quantity descending
@@ -68,14 +82,8 @@ namespace WcfServiceLibrary
                     return topPrice.ToList();
                 }
                 return top.ToList();
-            }
-            catch (Exception ex)
-            {
-                SetErrorDetails errorobj = new SetErrorDetails();
-                errorobj.ErrorName = "Something went wrong";
-                errorobj.ErrorDetails = ex.Message;
-                throw new FaultException<SetErrorDetails>(errorobj);
+          
             }
         }
     }
-}
+

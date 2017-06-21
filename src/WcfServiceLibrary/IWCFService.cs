@@ -9,7 +9,7 @@ using System.Text;
 namespace WcfServiceLibrary
 {
     [ServiceContract]
-    public interface IProductService
+    public interface IWCFService
     {
         [OperationContract]
         [FaultContract(typeof(SetErrorDetails))]
@@ -22,6 +22,17 @@ namespace WcfServiceLibrary
         [OperationContract]
         [FaultContract(typeof(SetErrorDetails))]
         List<Product> topFive();
+
+        [OperationContract]
+        [FaultContract(typeof(SetErrorDetails))]
+        List<Customer> allCustomers();
+
+        [OperationContract]
+        [FaultContract(typeof(SetErrorDetails))]
+        Customer findCust(string username);
+
+        [OperationContract]
+        int CreateCustomer(Customer request);
     }
 
     [DataContract]
@@ -52,6 +63,18 @@ namespace WcfServiceLibrary
         public Nullable<bool> IsDiscontinued { get; set; }
     }
 
+    [DataContract]
+    public class Customers
+    {
+        [DataMember]
+        public int CustomerID { get; set; }
+        [DataMember]
+        public string UserName { get; set; }
+        [DataMember]
+        public string FirstName { get; set; }
+        [DataMember]
+        public string LastName { get; set; }
+    }
 
     [DataContract]
     public class SetErrorDetails
@@ -62,30 +85,14 @@ namespace WcfServiceLibrary
         [DataMember]
         public string ErrorName
         {
-            get
-            {
-                return errorName;
-            }
-
-            set
-            {
-                errorName = value;
-            }
+            get { return errorName; }
+            set{ errorName = value; }
         }
-
         [DataMember]
         public string ErrorDetails
         {
-            get
-            {
-                return errorDetails;
-            }
-
-            set
-            {
-                errorDetails = value;
-            }
+            get{ return errorDetails; }
+            set{ errorDetails = value; }
         }
-
     }
 }
