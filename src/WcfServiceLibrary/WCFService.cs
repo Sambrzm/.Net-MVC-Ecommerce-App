@@ -20,7 +20,7 @@ namespace WcfServiceLibrary
 
         public int CreateCustomer(Customer request)
         {
-            ClassLibrary.Customer c = new ClassLibrary.Customer()
+            Customer c = new ClassLibrary.Customer()
             {
                 FirstName = request.FirstName,
                 LastName = request.LastName,
