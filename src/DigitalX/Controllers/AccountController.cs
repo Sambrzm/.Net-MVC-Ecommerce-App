@@ -143,6 +143,11 @@ namespace DigitalX.Controllers
         }
 
         //
+
+
+        //Ajax POST
+
+       
         // POST: /Account/Register
         [HttpPost]
         [AllowAnonymous]
@@ -156,6 +161,9 @@ namespace DigitalX.Controllers
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+
+
+
                     
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link

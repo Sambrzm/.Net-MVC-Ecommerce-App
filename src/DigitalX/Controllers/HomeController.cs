@@ -12,8 +12,10 @@ namespace DigitalX.Controllers
         private ProductServiceClient psc = new ProductServiceClient();
 
         public ActionResult Index()
-        {
+        {            
             ViewBag.topFive = psc.topFive();
+            ViewBag.listProducts = psc.findAll();
+
             return View();
         }
 
@@ -30,7 +32,7 @@ namespace DigitalX.Controllers
         {
             ViewBag.Message = "Product Details.";
 
-            Product product = psc.find(Id);
+            ServiceReference1.Product product = psc.find(Id);
 
             return View(product);
         }

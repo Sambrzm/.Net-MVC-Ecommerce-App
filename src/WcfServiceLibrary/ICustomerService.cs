@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
+using System.ServiceModel.Web;
 using System.Text;
 
 namespace WcfServiceLibrary
@@ -14,7 +15,15 @@ namespace WcfServiceLibrary
     {
         [OperationContract]
         [FaultContract(typeof(SetErrorDetails))]
-        Customer findCustomer(int id);
+        List<Customer> findAll();
+
+        [OperationContract]
+        [FaultContract(typeof(SetErrorDetails))]
+        Customer find(int id);
+
+        [OperationContract]
+        int CreateCustomer(Customer request);
+
     }
 
     [DataContract]
@@ -23,14 +32,10 @@ namespace WcfServiceLibrary
         [DataMember]
         public int CustomerID { get; set; }
         [DataMember]
-        public string UserName { get; set; }
-        [DataMember]
         public string FirstName { get; set; }
         [DataMember]
         public string LastName { get; set; }
         [DataMember]
-        public ICollection<Order> Orders { get; set; }
-        [DataMember]
-        public ICollection<Address> Addresses { get; set; }
-    }    
+        public string Username { get; set; }
+    }
 }

@@ -8,16 +8,44 @@ using System.Text;
 
 namespace WcfServiceLibrary
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "CustomerService" in both code and config file together.
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerCall)]
     public class CustomerService : ICustomerService
     {
         private DigitalXDBEntities dxe = new DigitalXDBEntities();
-        
-        public Customer findCustomer(int id)
+
+        public int CreateCustomer(Customer request)
+        {
+            ClassLibrary.Customer c = new ClassLibrary.Customer()
+            {
+                FirstName = request.FirstName,
+                LastName = request.LastName,
+                UserName = request.UserName
+            };
+            dxe.Customers.Add(c);
+            dxe.SaveChanges();
+            return c.CustomerID;
+        }
+
+        public Customer find(int id)
         {
             try
             {
-                return dxe.Customers.Single(c => c.CustomerID == id);
+                return dxe.Customers.Single(p => p.CustomerID == id);
+            }
+            catch (Exception ex)
+            {
+                SetErrorDetails errorobj = new SetErrorDetails();
+                errorobj.ErrorName = "Something went wrong";
+                errorobj.ErrorDetails = ex.Message;
+                throw new FaultException<SetErrorDetails>(errorobj);
+            }
+        }
+
+        public List<Customer> findAll()
+        {
+            try
+            {
+                return dxe.Customers.ToList();
             }
             catch (Exception ex)
             {
@@ -28,4 +56,6 @@ namespace WcfServiceLibrary
             }
         }
     }
+
+
 }
