@@ -9,12 +9,14 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using DigitalX.Models;
+using DigitalX.ServiceReference1;
 
 namespace DigitalX.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
+        private ProductServiceClient psc = new ProductServiceClient();
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -139,6 +141,7 @@ namespace DigitalX.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            
             return View();
         }
 
@@ -151,8 +154,11 @@ namespace DigitalX.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Username, Email = model.Email };
+                var customer = new Customer { UserName = model.Username, FirstName = model.FirstName, LastName = model.LastName };
+                psc.CreateCustomer(customer);
+                var user = new ApplicationUser { UserName = model.Username, Email = model.Email };                
                 var result = await UserManager.CreateAsync(user, model.Password);
+                
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);

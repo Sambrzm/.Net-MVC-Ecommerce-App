@@ -58,7 +58,6 @@
     <Compile Include="AddressType.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Class1.cs" />
     <Compile Include="Contact.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
