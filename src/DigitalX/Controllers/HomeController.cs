@@ -1,4 +1,4 @@
-﻿using DigitalX.ServiceReference;
+﻿using DigitalX.ServiceReference1;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,13 +9,11 @@ namespace DigitalX.Controllers
 {
     public class HomeController : Controller
     {
-        private WCFServiceClient psc = new WCFServiceClient();
+        private ProductServiceClient psc = new ProductServiceClient();
 
         public ActionResult Index()
-        {            
+        {
             ViewBag.topFive = psc.topFive();
-            ViewBag.listProducts = psc.findAll();
-
             return View();
         }
 
@@ -32,7 +30,7 @@ namespace DigitalX.Controllers
         {
             ViewBag.Message = "Product Details.";
 
-            ServiceReference.Product product = psc.find(Id);
+            Product product = psc.find(Id);
 
             return View(product);
         }

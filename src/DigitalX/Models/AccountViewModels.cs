@@ -78,18 +78,6 @@ namespace DigitalX.Models
     public class RegisterViewModel
     {
         [Required]
-        [Display(Name = "First Name")]
-        public string FirstName { get; set; }
-
-        [Required]
-        [Display(Name = "Last Name")]
-        public string LastName { get; set; }
-
-        [Required]
-        [Display(Name = "Address")]
-        public string Address { get; set; }
-
-        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
@@ -120,7 +108,7 @@ namespace DigitalX.Models
         public string Email { get; set; }
 
         [Required]
-        [StringLength(12, MinimumLength = 6, ErrorMessage = "Password must be between 6 and 12 characters long")]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
