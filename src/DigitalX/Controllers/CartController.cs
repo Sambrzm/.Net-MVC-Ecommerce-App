@@ -1,4 +1,4 @@
-﻿using DigitalX.ServiceReference;
+﻿using DigitalX.ServiceReference1;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +9,7 @@ namespace DigitalX.Controllers
 {
     public class CartController : Controller
     {
-        private WCFServiceClient psc = new WCFServiceClient();
+        ProductServiceClient psc = new ProductServiceClient();
 
         public ActionResult Index()
         {            

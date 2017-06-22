@@ -29,7 +29,7 @@ namespace ClassLibrary
         public virtual DbSet<AddressType> AddressTypes { get; set; }
         public virtual DbSet<Contact> Contacts { get; set; }
         public virtual DbSet<ContactType> ContactTypes { get; set; }
-        public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<Customer> Customer { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<Invoiced> Invoiceds { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
