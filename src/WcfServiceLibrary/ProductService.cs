@@ -56,9 +56,9 @@ namespace WcfServiceLibrary
             }
         }
 
-        public Customer findCustomer(int id)
+        public Customer findCustomer(string username)
         {
-            return dxe.Customer.Single(c => c.CustomerID == id);
+            return dxe.Customer.Single(c => c.UserName == username);            
         }
 
         public List<Product> topFive()

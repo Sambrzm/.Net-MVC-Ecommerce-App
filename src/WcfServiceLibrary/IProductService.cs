@@ -27,7 +27,7 @@ namespace WcfServiceLibrary
         int CreateCustomer(Customer request);
 
         [OperationContract]
-        Customer findCustomer(int id);
+        Customer findCustomer(string username);
     }
 
     [DataContract]

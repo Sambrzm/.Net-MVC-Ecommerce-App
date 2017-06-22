@@ -7,12 +7,14 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using DigitalX.Models;
+using DigitalX.ServiceReference1;
 
 namespace DigitalX.Controllers
 {
     [Authorize]
     public class ManageController : Controller
     {
+        private ProductServiceClient psc = new ProductServiceClient();
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -72,6 +74,8 @@ namespace DigitalX.Controllers
                 Logins = await UserManager.GetLoginsAsync(userId),
                 BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
             };
+            var username = User.Identity.Name;
+            ViewBag.customerDetails = psc.findCustomer(username);
             return View(model);
         }
 

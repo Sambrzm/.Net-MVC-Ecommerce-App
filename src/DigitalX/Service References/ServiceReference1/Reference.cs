@@ -2638,10 +2638,10 @@ namespace DigitalX.ServiceReference1 {
         System.Threading.Tasks.Task<int> CreateCustomerAsync(DigitalX.ServiceReference1.Customer request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/findCustomer", ReplyAction="http://tempuri.org/IProductService/findCustomerResponse")]
-        DigitalX.ServiceReference1.Customer findCustomer(int id);
+        DigitalX.ServiceReference1.Customer findCustomer(string username);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/findCustomer", ReplyAction="http://tempuri.org/IProductService/findCustomerResponse")]
-        System.Threading.Tasks.Task<DigitalX.ServiceReference1.Customer> findCustomerAsync(int id);
+        System.Threading.Tasks.Task<DigitalX.ServiceReference1.Customer> findCustomerAsync(string username);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -2703,12 +2703,12 @@ namespace DigitalX.ServiceReference1 {
             return base.Channel.CreateCustomerAsync(request);
         }
         
-        public DigitalX.ServiceReference1.Customer findCustomer(int id) {
-            return base.Channel.findCustomer(id);
+        public DigitalX.ServiceReference1.Customer findCustomer(string username) {
+            return base.Channel.findCustomer(username);
         }
         
-        public System.Threading.Tasks.Task<DigitalX.ServiceReference1.Customer> findCustomerAsync(int id) {
-            return base.Channel.findCustomerAsync(id);
+        public System.Threading.Tasks.Task<DigitalX.ServiceReference1.Customer> findCustomerAsync(string username) {
+            return base.Channel.findCustomerAsync(username);
         }
     }
 }
