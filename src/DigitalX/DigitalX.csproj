@@ -243,6 +243,9 @@
     <Content Include="Service References\ServiceReference1\DigitalX.ServiceReference1.Product.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\ServiceReference1\DigitalX.ServiceReference1.Address.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service References\ServiceReference1\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -300,6 +303,8 @@
       <SubType>Designer</SubType>
     </None>
     <Content Include="Views\Cart\checkout.cshtml" />
+    <Content Include="Views\Cart\CreateAddress.cshtml" />
+    <Content Include="Views\Cart\invoice.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

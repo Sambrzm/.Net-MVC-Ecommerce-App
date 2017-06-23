@@ -142,5 +142,10 @@ namespace WcfServiceLibrary
             };
             return a.AddressID;
         }
+
+        public List<Address> findAllAddress()
+        {
+            return dxe.Addresses.ToList();           
+        }
     }
 }

@@ -47,6 +47,30 @@
   <wsdl:message name="IProductService_findCustomer_OutputMessage">
     <wsdl:part name="parameters" element="tns:findCustomerResponse" />
   </wsdl:message>
+  <wsdl:message name="IProductService_createOrder_InputMessage">
+    <wsdl:part name="parameters" element="tns:createOrder" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_createOrder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:createOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_createBackOrder_InputMessage">
+    <wsdl:part name="parameters" element="tns:createBackOrder" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_createBackOrder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:createBackOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_createAddress_InputMessage">
+    <wsdl:part name="parameters" element="tns:createAddress" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_createAddress_OutputMessage">
+    <wsdl:part name="parameters" element="tns:createAddressResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_findAllAddress_InputMessage">
+    <wsdl:part name="parameters" element="tns:findAllAddress" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_findAllAddress_OutputMessage">
+    <wsdl:part name="parameters" element="tns:findAllAddressResponse" />
+  </wsdl:message>
   <wsdl:portType name="IProductService">
     <wsdl:operation name="findAll">
       <wsdl:input wsaw:Action="http://tempuri.org/IProductService/findAll" message="tns:IProductService_findAll_InputMessage" />
@@ -70,6 +94,22 @@
     <wsdl:operation name="findCustomer">
       <wsdl:input wsaw:Action="http://tempuri.org/IProductService/findCustomer" message="tns:IProductService_findCustomer_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProductService/findCustomerResponse" message="tns:IProductService_findCustomer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="createOrder">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductService/createOrder" message="tns:IProductService_createOrder_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductService/createOrderResponse" message="tns:IProductService_createOrder_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="createBackOrder">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductService/createBackOrder" message="tns:IProductService_createBackOrder_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductService/createBackOrderResponse" message="tns:IProductService_createBackOrder_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="createAddress">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductService/createAddress" message="tns:IProductService_createAddress_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductService/createAddressResponse" message="tns:IProductService_createAddress_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="findAllAddress">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductService/findAllAddress" message="tns:IProductService_findAllAddress_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductService/findAllAddressResponse" message="tns:IProductService_findAllAddress_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IProductService" type="tns:IProductService">
@@ -121,6 +161,42 @@
     </wsdl:operation>
     <wsdl:operation name="findCustomer">
       <soap:operation soapAction="http://tempuri.org/IProductService/findCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createOrder">
+      <soap:operation soapAction="http://tempuri.org/IProductService/createOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createBackOrder">
+      <soap:operation soapAction="http://tempuri.org/IProductService/createBackOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createAddress">
+      <soap:operation soapAction="http://tempuri.org/IProductService/createAddress" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findAllAddress">
+      <soap:operation soapAction="http://tempuri.org/IProductService/findAllAddress" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

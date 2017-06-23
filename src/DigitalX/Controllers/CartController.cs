@@ -71,18 +71,41 @@ namespace DigitalX.Controllers
             return View("Cart");
         }
 
-        public ActionResult checkout()
+        public ActionResult invoice()
         {
-            List<Item> cart = (List<Item>)Session["cart"];
-            ViewBag.cart = cart;
+            ViewBag.addressList = psc.findAllAddress();
+
             var username = User.Identity.Name;
             ViewBag.customerDetails = psc.findCustomer(username);
+
             return View();
+        }
+
+        public ActionResult checkout()
+        {
+            ViewBag.addressList = psc.findAllAddress();
+            var addresslist = psc.findAllAddress().ToList();
+            if (addresslist == null)
+            {
+                return CreateAddress();
+            }
+            else
+            {
+                return View();
+            }
         }
 
         public ActionResult CreateAddress()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateAddress(CreateAddressViewModel model)
+        {            
+            var address = new Address { Street = model.Street, Suburb = model.Suburb, City = model.City, Country = model.City, PostalCode = model.PostalCode };
+            psc.createAddress(address);
+            return View(model);
         }
 
         //[HttpPost]

@@ -2,58 +2,22 @@
 @{
     ViewBag.Title = "checkout";
 }
-@using DigitalX.Controllers;
 
-<h2>checkout</h2>
+<h2>Please Select an Address for Delivery</h2>
 
-<div class="row">
-    <table class="table">
-        <tr>
-            <th>
-                Option
-            </th>
-            <th>
-                ProductName
-            </th>
-            <th>
-                ProductDescription
-            </th>
-            <th>
-                Price
-            </th>
-            <th>
-                UnitsInStock
-            </th>
-            <th>
-                Quantity
-            </th>
-            <th>
-                Sub Total
-            </th>
-        </tr>
+<select name="listbox" id="listbox">
+    @foreach (var item in ViewBag.addressList)
+    {
 
-        @foreach (var item in (List<Item>)Session["cart"])
-        {
-            <tr>
-                <td>
-                    @item.Product.ProductName
-                </td>
-                <td>
-                    @item.Product.ProductDescription
-                </td>
-                <td>
-                    @item.Product.Price
-                </td>
-                <td>
-                    @item.Product.UnitsInStock
-                </td>
-                <td>
-                    @item.Quantity
-                </td>
-                <td>
-                    @(item.Product.Price * item.Quantity)
-                </td>
-            </tr>
-        }
-    </table>
-</div>
+        <option value="@item.Street">
+            @item.Suburb
+            @item.City
+            @item.PostalCode
+            @item.Country
+        </option>
+    }
+</select>
+
+@Html.ActionLink("New Address", "CreateAddress", "Cart")
+@Html.ActionLink("Next", "invoice", "Cart")
+

@@ -37,6 +37,9 @@ namespace WcfServiceLibrary
 
         [OperationContract]
         int createAddress(Address request);
+
+        [OperationContract]
+        List<Address> findAllAddress();
         
     }
 
