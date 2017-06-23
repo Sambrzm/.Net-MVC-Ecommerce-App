@@ -11,7 +11,9 @@ namespace ClassLibrary
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Runtime.Serialization;
+
+    [DataContract]
     public partial class Order
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,17 +22,24 @@ namespace ClassLibrary
             this.Invoiceds = new HashSet<Invoiced>();
             this.OrderDetails = new HashSet<OrderDetail>();
         }
-    
+        [DataMember]
         public int OrderID { get; set; }
+        [DataMember]
         public int CustomerID { get; set; }
+        [DataMember]
         public int AddressID { get; set; }
+        [DataMember]
         public System.DateTime OrderDate { get; set; }
+        [DataMember]
         public bool Complete { get; set; }
-    
-        public virtual Address Address { get; set; }
-        public virtual Customer Customer { get; set; }
+        [DataMember]
+        public Address Address { get; set; }
+        [DataMember]
+        public Customer Customer { get; set; }
+        [DataMember]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Invoiced> Invoiceds { get; set; }
+        public ICollection<Invoiced> Invoiceds { get; set; }
+        [DataMember]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public ICollection<OrderDetail> OrderDetails { get; set; }
     }

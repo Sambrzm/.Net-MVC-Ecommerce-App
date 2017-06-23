@@ -136,4 +136,23 @@ namespace DigitalX.Models
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
+
+    public class CreateAddressViewModel
+    {        
+        [Required]
+        [Display(Name = "Street")]
+        public string Street { get; set; }
+        [Required]
+        [Display(Name = "Suburb")]
+        public string Suburb { get; set; }
+        [Required]
+        [Display(Name = "City")]
+        public string City { get; set; }
+        [Required]
+        [Display(Name = "Postal Code")]
+        public string PostalCode { get; set; }
+        [Required]
+        [Display(Name = "Country")]
+        public string Country { get; set; }
+    }
 }

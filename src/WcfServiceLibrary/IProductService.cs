@@ -29,6 +29,14 @@ namespace WcfServiceLibrary
         [OperationContract]
         Customer findCustomer(string username);
 
+        [OperationContract]
+        int createOrder(Order request);
+
+        [OperationContract]
+        int createBackOrder(Order request);
+
+        [OperationContract]
+        int createAddress(Address request);
         
     }
 

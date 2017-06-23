@@ -4,6 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Globalization;
+using System.Security.Claims;
+using System.Threading.Tasks;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
+using DigitalX.Models;
 
 namespace DigitalX.Controllers
 {
@@ -63,5 +70,31 @@ namespace DigitalX.Controllers
 
             return View("Cart");
         }
+
+        public ActionResult checkout()
+        {
+            List<Item> cart = (List<Item>)Session["cart"];
+            ViewBag.cart = cart;
+            var username = User.Identity.Name;
+            ViewBag.customerDetails = psc.findCustomer(username);
+            return View();
+        }
+
+        public ActionResult CreateAddress()
+        {
+            return View();
+        }
+
+        //[HttpPost]
+        //public ActionResult checkout(CreateAddressViewModel model)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        List<Item> cart = (List<Item>)Session["cart"];
+        //        var test = cart.
+        //        var order = new Order { CustomerID = cart. };
+        //        return View(model);
+        //    }
+        //}
     }
 }

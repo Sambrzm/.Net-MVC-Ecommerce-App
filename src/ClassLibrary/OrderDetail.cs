@@ -11,18 +11,28 @@ namespace ClassLibrary
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Runtime.Serialization;
+
+    [DataContract]
     public partial class OrderDetail
     {
+        [DataMember]
         public int DetailID { get; set; }
+        [DataMember]
         public int OrderID { get; set; }
+        [DataMember]
         public int ProductID { get; set; }
+        [DataMember]
         public int Quantity { get; set; }
+        [DataMember]
         public bool Packaged { get; set; }
+        [DataMember]
         public Nullable<int> PackagedBy { get; set; }
-    
-        public virtual Employee Employee { get; set; }
-        public virtual Order Order { get; set; }
-        public virtual Product Product { get; set; }
+        [DataMember]
+        public Employee Employee { get; set; }
+        [DataMember]
+        public Order Order { get; set; }
+        [DataMember]
+        public Product Product { get; set; }
     }
 }

@@ -13,6 +13,40 @@ namespace WcfServiceLibrary
     {        
         private DigitalXDBEntities dxe = new DigitalXDBEntities();
 
+        public int createBackOrder(Order request)
+        {
+            Order o = new Order()
+            {
+                OrderID = request.OrderID,
+                CustomerID = request.CustomerID,
+                AddressID = request.AddressID,
+                OrderDate = request.OrderDate,
+                Complete = request.Complete,
+                Address = request.Address,
+                Customer = request.Customer
+            };
+            dxe.Orders.Add(o);
+            dxe.SaveChanges();
+            return o.OrderID;
+        }        
+
+        public int createOrder(Order request)
+        {
+            Order o = new Order()
+            {
+                OrderID = request.OrderID,
+                CustomerID = request.CustomerID,
+                AddressID = request.AddressID,
+                OrderDate = request.OrderDate,
+                Complete = request.Complete,
+                Address = request.Address,
+                Customer = request.Customer
+            };
+            dxe.Orders.Add(o);
+            dxe.SaveChanges();
+            return o.OrderID;
+        }
+
         public int CreateCustomer(Customer request)
         {
             Customer c = new Customer()
@@ -94,6 +128,19 @@ namespace WcfServiceLibrary
                 errorobj.ErrorDetails = ex.Message;
                 throw new FaultException<SetErrorDetails>(errorobj);
             }
+        }
+
+        public int createAddress(Address request)
+        {
+            Address a = new Address()
+            {
+                Street = request.Street,
+                Suburb = request.Suburb,
+                City = request.City,
+                PostalCode = request.PostalCode,
+                Country = request.Country
+            };
+            return a.AddressID;
         }
     }
 }
