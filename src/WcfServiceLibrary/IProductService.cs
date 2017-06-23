@@ -28,6 +28,8 @@ namespace WcfServiceLibrary
 
         [OperationContract]
         Customer findCustomer(string username);
+
+        
     }
 
     [DataContract]

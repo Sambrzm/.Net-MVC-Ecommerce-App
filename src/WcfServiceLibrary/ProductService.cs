@@ -58,7 +58,7 @@ namespace WcfServiceLibrary
 
         public Customer findCustomer(string username)
         {
-            return dxe.Customer.Single(c => c.UserName == username);            
+            return dxe.Customer.FirstOrDefault(c => c.UserName == username);            
         }
 
         public List<Product> topFive()
