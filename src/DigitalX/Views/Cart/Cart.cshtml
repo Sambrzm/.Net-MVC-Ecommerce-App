@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Cart";
+    bool check = true;
 }
 @using DigitalX.Controllers;
 
@@ -62,11 +63,26 @@
             <td>
                 @Html.ActionLink("Details", "Details", "Home", new { id = item.Product.ProductID }, null)
             </td>
-        </tr>
+            @if (@item.Quantity > item.Product.UnitsInStock)
+            {
+                check = false;
+            }
+            else
+            {
+                check = true;
+            }
+        </tr>        
     }
 
 </table>
 <hr />
 @Html.ActionLink("Continue Shopping", "Products", "Home")
+@if (check == true)
+{
 @Html.ActionLink("Checkout", "Checkout", "Cart")
+}
+else
+{
+    @Html.ActionLink("false", "false", "false")
+}
 

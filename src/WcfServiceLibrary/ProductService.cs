@@ -132,7 +132,7 @@ namespace WcfServiceLibrary
 
         public int createAddress(Address request)
         {
-            Address a = new Address()
+            Address a = new Address
             {
                 Street = request.Street,
                 Suburb = request.Suburb,
@@ -143,9 +143,26 @@ namespace WcfServiceLibrary
             return a.AddressID;
         }
 
-        public List<Address> findAllAddress()
+        public List<Address> findAllAddress(string username)
         {
-            return dxe.Addresses.ToList();           
+            var address = (from o in dxe.Orders
+                           join a in dxe.Addresses on o.AddressID equals a.AddressID
+                           join c in dxe.Customer on o.CustomerID equals c.CustomerID
+                           where c.UserName == username
+                           select a).ToList();
+            return address;
+            //return dxe.Addresses.ToList();           
+        }
+
+        public List<Order> findOrders(string username)
+        {
+            var orders = (from o in dxe.Orders
+                          from c in dxe.Customer
+                          from od in dxe.OrderDetails
+                          where o.CustomerID == c.CustomerID
+                          where c.UserName == username
+                          select o);
+            return orders.ToList();
         }
     }
 }

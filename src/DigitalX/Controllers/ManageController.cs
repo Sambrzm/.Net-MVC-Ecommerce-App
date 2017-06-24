@@ -76,6 +76,7 @@ namespace DigitalX.Controllers
             };
             var username = User.Identity.Name;
             ViewBag.customerDetails = psc.findCustomer(username);
+            ViewBag.customerOrders = psc.findOrders(username);
             return View(model);
         }
 

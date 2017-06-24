@@ -2649,6 +2649,12 @@ namespace DigitalX.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/createOrder", ReplyAction="http://tempuri.org/IProductService/createOrderResponse")]
         System.Threading.Tasks.Task<int> createOrderAsync(DigitalX.ServiceReference1.Order request);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/findOrders", ReplyAction="http://tempuri.org/IProductService/findOrdersResponse")]
+        DigitalX.ServiceReference1.Order[] findOrders(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/findOrders", ReplyAction="http://tempuri.org/IProductService/findOrdersResponse")]
+        System.Threading.Tasks.Task<DigitalX.ServiceReference1.Order[]> findOrdersAsync(string username);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/createBackOrder", ReplyAction="http://tempuri.org/IProductService/createBackOrderResponse")]
         int createBackOrder(DigitalX.ServiceReference1.Order request);
         
@@ -2662,10 +2668,10 @@ namespace DigitalX.ServiceReference1 {
         System.Threading.Tasks.Task<int> createAddressAsync(DigitalX.ServiceReference1.Address request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/findAllAddress", ReplyAction="http://tempuri.org/IProductService/findAllAddressResponse")]
-        DigitalX.ServiceReference1.Address[] findAllAddress();
+        DigitalX.ServiceReference1.Address[] findAllAddress(string username);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/findAllAddress", ReplyAction="http://tempuri.org/IProductService/findAllAddressResponse")]
-        System.Threading.Tasks.Task<DigitalX.ServiceReference1.Address[]> findAllAddressAsync();
+        System.Threading.Tasks.Task<DigitalX.ServiceReference1.Address[]> findAllAddressAsync(string username);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -2743,6 +2749,14 @@ namespace DigitalX.ServiceReference1 {
             return base.Channel.createOrderAsync(request);
         }
         
+        public DigitalX.ServiceReference1.Order[] findOrders(string username) {
+            return base.Channel.findOrders(username);
+        }
+        
+        public System.Threading.Tasks.Task<DigitalX.ServiceReference1.Order[]> findOrdersAsync(string username) {
+            return base.Channel.findOrdersAsync(username);
+        }
+        
         public int createBackOrder(DigitalX.ServiceReference1.Order request) {
             return base.Channel.createBackOrder(request);
         }
@@ -2759,12 +2773,12 @@ namespace DigitalX.ServiceReference1 {
             return base.Channel.createAddressAsync(request);
         }
         
-        public DigitalX.ServiceReference1.Address[] findAllAddress() {
-            return base.Channel.findAllAddress();
+        public DigitalX.ServiceReference1.Address[] findAllAddress(string username) {
+            return base.Channel.findAllAddress(username);
         }
         
-        public System.Threading.Tasks.Task<DigitalX.ServiceReference1.Address[]> findAllAddressAsync() {
-            return base.Channel.findAllAddressAsync();
+        public System.Threading.Tasks.Task<DigitalX.ServiceReference1.Address[]> findAllAddressAsync(string username) {
+            return base.Channel.findAllAddressAsync(username);
         }
     }
 }

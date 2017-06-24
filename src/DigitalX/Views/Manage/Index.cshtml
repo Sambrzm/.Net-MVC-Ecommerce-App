@@ -7,14 +7,60 @@
 
 <p class="text-success">@ViewBag.StatusMessage</p>
 <div>
+
+    <h4>User Details</h4>
+    <div>
+        @ViewBag.customerDetails.Orders
+    </div>
+
+    <h4>Order History</h4>
+    @*@if (ViewBag.customerOrders)
+    {
+        <p>You have no previous orders</p>
+    } else {*@
+        <table>
+            <tr>
+                <th>
+                    Order ID
+                </th>
+                <th>
+                    Order Date
+                </th>
+                <th>
+                    Complete
+                </th>
+                <th>
+                    Is Back Ordered
+                </th>
+                <th>
+                    Total Amount
+                </th>
+            </tr>
+        @foreach (var item in ViewBag.customerOrders)
+            {
+                <tr>
+                    <td>
+                        @item.OrderID
+                    </td>
+                    <td>
+                        @item.OrderDate
+                    </td>
+                    <td>
+                        @item.Complete
+                    </td>
+                    <td>
+                        isbackordered
+                    </td>
+                    <td>
+                        @(item.Product.Price * item.OrderDetails.Quantity)
+                    </td>
+                </tr>
+            }
+        </table>
+    @*}*@
     <h4>Change your account settings</h4>
     <hr />
-    <dl class="dl-horizontal">
-
-        <dt>User Details</dt>
-        <dd>
-            @ViewBag.customerDetails.Orders
-        </dd>
+    <dl class="dl-horizontal">       
 
         <dt>Password:</dt>
         <dd>

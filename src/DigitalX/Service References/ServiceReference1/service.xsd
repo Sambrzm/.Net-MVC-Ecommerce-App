@@ -81,10 +81,24 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="findOrders">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="findOrdersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="findOrdersResult" nillable="true" type="q7:ArrayOfOrder" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="createBackOrder">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="request" nillable="true" type="q7:Order" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="request" nillable="true" type="q8:Order" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -98,7 +112,7 @@
   <xs:element name="createAddress">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="request" nillable="true" type="q8:Address" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="request" nillable="true" type="q9:Address" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -111,13 +125,15 @@
   </xs:element>
   <xs:element name="findAllAddress">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="findAllAddressResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="findAllAddressResult" nillable="true" type="q9:ArrayOfAddress" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="findAllAddressResult" nillable="true" type="q10:ArrayOfAddress" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

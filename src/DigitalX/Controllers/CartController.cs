@@ -19,7 +19,7 @@ namespace DigitalX.Controllers
         ProductServiceClient psc = new ProductServiceClient();
 
         public ActionResult Index()
-        {            
+        {
             if (Session["cart"] == null)
             {
                 return View("EmptyCart");
@@ -27,7 +27,7 @@ namespace DigitalX.Controllers
             else
             {
                 return View("Cart");
-            }                
+            }
         }
 
         private int isExisting(int id)
@@ -59,7 +59,7 @@ namespace DigitalX.Controllers
             }
             else
             {
-                List<Item> cart = (List<Item>) Session["cart"];
+                List<Item> cart = (List<Item>)Session["cart"];
                 int index = isExisting(id);
                 if (index == -1)
                     cart.Add(new Item(psc.find(id), 1));
@@ -69,30 +69,37 @@ namespace DigitalX.Controllers
             }
 
             return View("Cart");
+        }        
+        
+        public ActionResult checkout()
+        {
+            var username = User.Identity.Name;
+            ViewBag.addressList = psc.findAllAddress(username);            
+            
+            //if(addresslist == null)
+            //{
+            //  return CreateAddress();
+            //}  
+            //else
+            //{  
+                return View();
+            //}
         }
 
         public ActionResult invoice()
         {
-            ViewBag.addressList = psc.findAllAddress();
-
             var username = User.Identity.Name;
+            Address address = (Address)Session["address"];
+            ViewBag.displayAddress = address;
+            //ViewBag.addressList = psc.findAllAddress(username);
             ViewBag.customerDetails = psc.findCustomer(username);
 
             return View();
         }
 
-        public ActionResult checkout()
+        public ActionResult BOorCont()
         {
-            ViewBag.addressList = psc.findAllAddress();
-            var addresslist = psc.findAllAddress().ToList();
-            if (addresslist == null)
-            {
-                return CreateAddress();
-            }
-            else
-            {
-                return View();
-            }
+            return View();
         }
 
         public ActionResult CreateAddress()
@@ -102,9 +109,22 @@ namespace DigitalX.Controllers
 
         [HttpPost]
         public ActionResult CreateAddress(CreateAddressViewModel model)
-        {            
-            var address = new Address { Street = model.Street, Suburb = model.Suburb, City = model.City, Country = model.City, PostalCode = model.PostalCode };
-            psc.createAddress(address);
+        {
+            if (ModelState.IsValid)
+            {
+                var address = new Address();
+                address.Street = model.Street;
+                address.Suburb = model.Suburb;
+                address.City = model.City;
+                address.Country = model.City;
+                address.PostalCode = model.PostalCode;
+
+                psc.createAddress(address);
+
+                Session["address"] = address;
+
+                return RedirectToAction("invoice", "Cart");
+            }
             return View(model);
         }
 

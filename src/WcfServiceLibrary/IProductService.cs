@@ -33,13 +33,16 @@ namespace WcfServiceLibrary
         int createOrder(Order request);
 
         [OperationContract]
+        List<Order> findOrders(string username);
+
+        [OperationContract]
         int createBackOrder(Order request);
 
         [OperationContract]
         int createAddress(Address request);
 
         [OperationContract]
-        List<Address> findAllAddress();
+        List<Address> findAllAddress(string username);
         
     }
 
