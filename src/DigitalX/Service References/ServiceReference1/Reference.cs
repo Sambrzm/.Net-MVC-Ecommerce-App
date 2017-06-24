@@ -2649,17 +2649,17 @@ namespace DigitalX.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/createOrder", ReplyAction="http://tempuri.org/IProductService/createOrderResponse")]
         System.Threading.Tasks.Task<int> createOrderAsync(DigitalX.ServiceReference1.Order request);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/createOrderDetails", ReplyAction="http://tempuri.org/IProductService/createOrderDetailsResponse")]
+        int createOrderDetails(DigitalX.ServiceReference1.OrderDetail request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/createOrderDetails", ReplyAction="http://tempuri.org/IProductService/createOrderDetailsResponse")]
+        System.Threading.Tasks.Task<int> createOrderDetailsAsync(DigitalX.ServiceReference1.OrderDetail request);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/findOrders", ReplyAction="http://tempuri.org/IProductService/findOrdersResponse")]
         DigitalX.ServiceReference1.Order[] findOrders(string username);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/findOrders", ReplyAction="http://tempuri.org/IProductService/findOrdersResponse")]
         System.Threading.Tasks.Task<DigitalX.ServiceReference1.Order[]> findOrdersAsync(string username);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/createBackOrder", ReplyAction="http://tempuri.org/IProductService/createBackOrderResponse")]
-        int createBackOrder(DigitalX.ServiceReference1.Order request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/createBackOrder", ReplyAction="http://tempuri.org/IProductService/createBackOrderResponse")]
-        System.Threading.Tasks.Task<int> createBackOrderAsync(DigitalX.ServiceReference1.Order request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/createAddress", ReplyAction="http://tempuri.org/IProductService/createAddressResponse")]
         int createAddress(DigitalX.ServiceReference1.Address request);
@@ -2749,20 +2749,20 @@ namespace DigitalX.ServiceReference1 {
             return base.Channel.createOrderAsync(request);
         }
         
+        public int createOrderDetails(DigitalX.ServiceReference1.OrderDetail request) {
+            return base.Channel.createOrderDetails(request);
+        }
+        
+        public System.Threading.Tasks.Task<int> createOrderDetailsAsync(DigitalX.ServiceReference1.OrderDetail request) {
+            return base.Channel.createOrderDetailsAsync(request);
+        }
+        
         public DigitalX.ServiceReference1.Order[] findOrders(string username) {
             return base.Channel.findOrders(username);
         }
         
         public System.Threading.Tasks.Task<DigitalX.ServiceReference1.Order[]> findOrdersAsync(string username) {
             return base.Channel.findOrdersAsync(username);
-        }
-        
-        public int createBackOrder(DigitalX.ServiceReference1.Order request) {
-            return base.Channel.createBackOrder(request);
-        }
-        
-        public System.Threading.Tasks.Task<int> createBackOrderAsync(DigitalX.ServiceReference1.Order request) {
-            return base.Channel.createBackOrderAsync(request);
         }
         
         public int createAddress(DigitalX.ServiceReference1.Address request) {

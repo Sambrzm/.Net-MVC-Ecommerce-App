@@ -72,8 +72,10 @@ namespace DigitalX.Controllers
         }        
         
         public ActionResult checkout()
-        {
+        {   
             var username = User.Identity.Name;
+            var cust = psc.findCustomer(username);
+            custid = cust.CustomerID;
             ViewBag.addressList = psc.findAllAddress(username);            
             
             //if(addresslist == null)
@@ -84,6 +86,67 @@ namespace DigitalX.Controllers
             //{  
                 return View();
             //}
+        }
+
+        public ActionResult BOorCont()
+        {
+            backord = true;
+            return View();
+        }
+
+        public ActionResult createBackOrder()
+        {
+            backord = false;
+            return RedirectToAction("invoice", "Cart");
+        }
+
+        public int ordid { get; set; }
+        public int custid { get; set; }
+        public int addid { get; set; }
+        public bool backord { get; set; }
+        public int prodid { get; set; }
+        public int prodqty { get; set; }
+
+        [HttpPost]
+        public ActionResult createOrder(OrderViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var order = new Order();
+                order.CustomerID = custid;                
+                order.OrderDate = DateTime.Now;
+                order.Complete = backord;
+
+                psc.createOrder(order);
+
+                ordid = psc.createOrder(order);
+
+                
+                List<Item> cart = (List<Item>)Session["cart"];
+                Product product = (Product)Session["cart"];
+                prodid = product.ProductID;
+                int index = isExisting(prodid);
+                prodqty = cart[index].Quantity;
+
+                //return RedirectToAction("invoice", "Cart");
+                //    }
+                //    return RedirectToAction("checkout", "Cart");
+                //}
+
+                //[HttpPost]
+                //public ActionResult createOrderDetails(OrderViewModel model)
+                //{
+                //    if (ModelState.IsValid)
+                //    {
+                var orderDetails = new OrderDetail();
+                orderDetails.OrderID = ordid;
+                orderDetails.ProductID = prodid;
+                orderDetails.Quantity = prodqty;
+
+                psc.createOrderDetails(orderDetails);
+                return RedirectToAction("invoice", "Cart");
+            }
+            return RedirectToAction("checkout", "Cart");
         }
 
         public ActionResult invoice()
@@ -97,12 +160,7 @@ namespace DigitalX.Controllers
             ViewBag.customerDetails = psc.findCustomer(username);
 
             return View();
-        }
-
-        public ActionResult BOorCont()
-        {
-            return View();
-        }
+        }  
 
         public ActionResult CreateAddress()
         {

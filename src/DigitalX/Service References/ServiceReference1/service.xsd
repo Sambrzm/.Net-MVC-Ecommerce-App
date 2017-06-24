@@ -81,6 +81,20 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="createOrderDetails">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="request" nillable="true" type="q7:OrderDetail" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="createOrderDetailsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="createOrderDetailsResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="findOrders">
     <xs:complexType>
       <xs:sequence>
@@ -91,21 +105,7 @@
   <xs:element name="findOrdersResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="findOrdersResult" nillable="true" type="q7:ArrayOfOrder" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="createBackOrder">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="request" nillable="true" type="q8:Order" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="createBackOrderResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="createBackOrderResult" type="xs:int" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="findOrdersResult" nillable="true" type="q8:ArrayOfOrder" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
