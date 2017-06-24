@@ -11,40 +11,33 @@ namespace WcfServiceLibrary
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerCall, ConcurrencyMode = ConcurrencyMode.Single)]
     public class ProductService : IProductService
     {        
-        private DigitalXDBEntities dxe = new DigitalXDBEntities();
-
-        public int createBackOrder(Order request)
-        {
-            Order o = new Order()
-            {
-                OrderID = request.OrderID,
-                CustomerID = request.CustomerID,
-                AddressID = request.AddressID,
-                OrderDate = request.OrderDate,
-                Complete = request.Complete,
-                Address = request.Address,
-                Customer = request.Customer
-            };
-            dxe.Orders.Add(o);
-            dxe.SaveChanges();
-            return o.OrderID;
-        }        
+        private DigitalXDBEntities dxe = new DigitalXDBEntities();               
 
         public int createOrder(Order request)
         {
             Order o = new Order()
             {
-                OrderID = request.OrderID,
                 CustomerID = request.CustomerID,
                 AddressID = request.AddressID,
                 OrderDate = request.OrderDate,
-                Complete = request.Complete,
-                Address = request.Address,
-                Customer = request.Customer
+                Complete = request.Complete
             };
-            dxe.Orders.Add(o);
+            dxe.Orders.Add(o);            
             dxe.SaveChanges();
             return o.OrderID;
+        }
+
+        public int createOrderDetails(OrderDetail request)
+        {
+            OrderDetail od = new OrderDetail()
+            {
+                OrderID = request.OrderID,
+                ProductID = request.ProductID,
+                Quantity = request.Quantity
+            };
+            dxe.OrderDetails.Add(od);
+            dxe.SaveChanges();
+            return od.DetailID;
         }
 
         public int CreateCustomer(Customer request)
@@ -140,6 +133,8 @@ namespace WcfServiceLibrary
                 PostalCode = request.PostalCode,
                 Country = request.Country
             };
+            dxe.Addresses.Add(a);
+            dxe.SaveChanges();            
             return a.AddressID;
         }
 
@@ -164,5 +159,7 @@ namespace WcfServiceLibrary
                           select o);
             return orders.ToList();
         }
+
+        
     }
 }

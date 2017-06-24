@@ -91,7 +91,9 @@ namespace DigitalX.Controllers
             var username = User.Identity.Name;
             Address address = (Address)Session["address"];
             ViewBag.displayAddress = address;
-            //ViewBag.addressList = psc.findAllAddress(username);
+            
+
+
             ViewBag.customerDetails = psc.findCustomer(username);
 
             return View();
