@@ -119,7 +119,7 @@ namespace DigitalX.Controllers
                 var username = User.Identity.Name;
                 var cust = psc.findCustomer(username);
                 custid = cust.CustomerID;
-
+                backord = true;
                 var order = new Order();
                 order.CustomerID = custid;                
                 order.OrderDate = DateTime.Now;
@@ -181,6 +181,8 @@ namespace DigitalX.Controllers
             var username = User.Identity.Name;
             addy = (Address)Session["address"];
             ViewBag.displayAddress = addy;
+            ordid = psc.findOrdid();
+            ViewBag.order = psc.invoiceOrder(ordid);
             
 
 

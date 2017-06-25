@@ -3,13 +3,54 @@
     ViewBag.Title = "invoice";
 }
 
-<h1>invoice</h1>
+<h1>Invoice</h1>
 
-<h4>Delivery Address</h4>
-<p>@ViewBag.displayAddress.Street</p>
-<p>@ViewBag.displayAddress.Suburb</p>
-<p>@ViewBag.displayAddress.City</p>
-<p>@ViewBag.displayAddress.PostalCode</p>
-<p>@ViewBag.displayAddress.Country</p>
+<table class="table">
+    <tr>
+
+        <th>
+            OrderDate
+        </th>
+        <th>
+            Address ID
+        </th>
+        <th>
+            Not On BackOrder
+        </th>
+        <th>
+            Customer ID
+        </th>        
+        
+    </tr>    
+    <tr>
+        <td>
+            @ViewBag.order.OrderDate
+        </td> 
+        <td>
+            @ViewBag.order.AddressID
+        </td>
+        <td>
+            @ViewBag.order.Complete
+        </td>
+        <td>
+            @ViewBag.order.CustomerID
+        </td>
+                       
+    </tr>
+    
+
+</table>
+
+<hr />
+
+<div>
+    <h4>Delivery Address</h4>
+    <p>@ViewBag.displayAddress.Street</p>
+    <p>@ViewBag.displayAddress.Suburb</p>
+    <p>@ViewBag.displayAddress.City</p>
+    <p>@ViewBag.displayAddress.PostalCode</p>
+    <p>@ViewBag.displayAddress.Country</p>
+</div>
+
 
 

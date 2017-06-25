@@ -43,3 +43,7 @@ textarea {
     vertical-align:top;
     margin-top: 30px;
 }
+.prod-info{
+    display:inline-block; 
+    vertical-align:middle;
+}

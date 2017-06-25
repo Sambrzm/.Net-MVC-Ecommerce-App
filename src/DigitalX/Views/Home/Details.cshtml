@@ -4,71 +4,75 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-
 <div>
-    <h4>@Model.ProductName</h4>
+    <h1>@Model.ProductName</h1>
+
     <hr />
-    <dl class="dl-horizontal">      
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductName)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ProductName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductDescription)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ProductDescription)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.UnitsInStock)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.UnitsInStock)
-        </dd>
+    <div class="row">
+        <span>
+            <img src="data:image;base64,@Convert.ToBase64String(Model.Picture)" height="250" />
+        </span>
         
-        <dd>
-            <img src="data:image;base64,@Convert.ToBase64String(Model.Picture)" />
-        </dd>
-        <dd>
-            @Html.ActionLink("Add to Cart", "AddToCart", "Cart", new { id = Model.ProductID }, null)
-        </dd>
+            <dl class="dl-horizontal prod-info" style="display:inline-block; vertical-align:middle;">
 
-        @*<dt>
-            @Html.DisplayNameFor(model => model.IsDiscontinued)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.IsDiscontinued)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ProductName)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.ProductName)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.RetailerID)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.RetailerID)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ProductDescription)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.ProductDescription)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.SubCategoryID)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.SubCategoryID)
-        </dd>*@
+                <dt>
+                    @Html.DisplayNameFor(model => model.Price)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Price)
+                </dd>
 
-    </dl>
+                <dt>
+                    @Html.DisplayNameFor(model => model.UnitsInStock)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.UnitsInStock)
+                </dd>
+
+
+                <dd>
+                    <p class="btn btn-primary btn-lg all-prod-button">@Html.ActionLink("Add to Cart", "AddToCart", "Cart", new { id = Model.ProductID }, null) &raquo;</p>
+                </dd>
+
+                @*<dt>
+                @Html.DisplayNameFor(model => model.IsDiscontinued)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.IsDiscontinued)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.RetailerID)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.RetailerID)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.SubCategoryID)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.SubCategoryID)
+            </dd>*@
+
+            </dl>
+        
+    </div>       
 </div>
-<p>
+<p style="margin-top:50px;">
     @Html.ActionLink("Back to List", "Index")
 </p>

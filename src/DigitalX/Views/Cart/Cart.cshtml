@@ -11,9 +11,7 @@
 
 <table class="table">
     <tr>
-        <th>
-            Option
-        </th>
+        
         <th>
             @Html.DisplayNameFor(model => model.ProductName)
         </th>
@@ -32,6 +30,9 @@
         <th>
             Sub Total
         </th>
+        <th>
+           
+        </th>
 
         <th></th>
     </tr>
@@ -39,9 +40,7 @@
     @foreach (var item in (List<Item>)Session["cart"])
     {
         <tr>
-            <td>
-                @Html.ActionLink("Remove", "Remove", "Cart", new { id = item.Product.ProductID }, null)
-            </td>
+            
             <td>
                 @item.Product.ProductName
             </td>
@@ -59,10 +58,13 @@
             </td>
             <td>
                 @(item.Product.Price * item.Quantity)
-            </td>
+            </td>           
 
             <td>
                 @Html.ActionLink("Details", "Details", "Home", new { id = item.Product.ProductID }, null)
+            </td>
+            <td>
+                @Html.ActionLink("Remove", "Remove", "Cart", new { id = item.Product.ProductID }, null)
             </td>
             @if (@item.Quantity > item.Product.UnitsInStock)
             {
@@ -76,9 +78,9 @@
     }
 
 </table>
-<div>
-    <h4>Sub Total:</h4>
-    <h4>    
+<hr />
+<div style="text-align:center">
+    <h4>Total:   
     @foreach (var item in (List<Item>)Session["cart"])
     {
         subTotal += (item.Product.Price * item.Quantity);        
@@ -86,14 +88,18 @@
     @subTotal
     </h4>
 </div>
-<hr />
+
+
+<div style="text-align:right">
+    @if (check == true)
+    {
+        <p class="btn btn-primary btn-lg all-prod-button">@Html.ActionLink("Checkout", "Checkout", "Cart") &raquo;</p>
+    }
+    else
+    {
+        @Html.ActionLink("Checkout", "BOorCont", "Cart")
+    }
+</div>
+
 @Html.ActionLink("Continue Shopping", "Products", "Home")
-@if (check == true)
-{
-    @Html.ActionLink("Checkout", "Checkout", "Cart")
-}
-else
-{
-    @Html.ActionLink("Checkout", "BOorCont", "Cart")
-}
 

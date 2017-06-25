@@ -55,6 +55,9 @@ namespace WcfServiceLibrary
 
         [OperationContract]
         int findOrdid();
+
+        [OperationContract]
+        Order invoiceOrder(int id);
         
     }
 

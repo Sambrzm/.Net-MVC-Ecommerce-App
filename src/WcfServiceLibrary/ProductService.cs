@@ -203,5 +203,13 @@ namespace WcfServiceLibrary
                                select  p.Price * od.Quantity ).FirstOrDefault();
             return orderdetail;
         }
+
+        public Order invoiceOrder(int id)
+        {
+            var order = (from o in dxe.Orders
+                         where o.OrderID == id
+                         select o).FirstOrDefault();
+            return order;
+        }
     }
 }

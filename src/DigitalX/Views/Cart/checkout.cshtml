@@ -1,14 +1,14 @@
 ﻿
 @{
     ViewBag.Title = "checkout";
+    //var val = listbox.Value;
 }
 
 <h2>Please Select an Address for Delivery</h2>
 
-<select name="listbox" id="listbox">
+<select name="listbox" id="listbox" style="width:500px; font-size:22px; padding:10px; border-radius:5px">
     @foreach (var item in ViewBag.addressList)
     {
-
         <option value="@item.Street">
             @item.Suburb
             @item.City
@@ -16,8 +16,15 @@
             @item.Country
         </option>
     }
+    
 </select>
+<div>
+    <p class="btn btn-primary btn-lg all-prod-button">@Html.ActionLink("New Address", "CreateAddress", "Cart") &raquo;</p>
+    @*@if (val != null)
+    {
+        <p class="btn btn-primary btn-lg all-prod-button">@Html.ActionLink("Complete Order", "createOrder", "Cart") &raquo;</p>
+    }*@
+      
+</div>
 
-@Html.ActionLink("New Address", "CreateAddress", "Cart")
-@Html.ActionLink("Complete Order", "createOrder", "Cart")
 

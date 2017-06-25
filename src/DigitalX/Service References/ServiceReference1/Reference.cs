@@ -2696,6 +2696,12 @@ namespace DigitalX.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/findOrdid", ReplyAction="http://tempuri.org/IProductService/findOrdidResponse")]
         System.Threading.Tasks.Task<int> findOrdidAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/invoiceOrder", ReplyAction="http://tempuri.org/IProductService/invoiceOrderResponse")]
+        DigitalX.ServiceReference1.Order invoiceOrder(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/invoiceOrder", ReplyAction="http://tempuri.org/IProductService/invoiceOrderResponse")]
+        System.Threading.Tasks.Task<DigitalX.ServiceReference1.Order> invoiceOrderAsync(int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -2835,6 +2841,14 @@ namespace DigitalX.ServiceReference1 {
         
         public System.Threading.Tasks.Task<int> findOrdidAsync() {
             return base.Channel.findOrdidAsync();
+        }
+        
+        public DigitalX.ServiceReference1.Order invoiceOrder(int id) {
+            return base.Channel.invoiceOrder(id);
+        }
+        
+        public System.Threading.Tasks.Task<DigitalX.ServiceReference1.Order> invoiceOrderAsync(int id) {
+            return base.Channel.invoiceOrderAsync(id);
         }
     }
 }

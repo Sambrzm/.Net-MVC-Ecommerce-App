@@ -1,6 +1,6 @@
 ﻿@model DigitalX.Models.IndexViewModel
 @{
-    ViewBag.Title = "Manage";
+    ViewBag.Title = "Manage Account";
     //int id = 1;
     //Session["orderid"] = id;
     decimal sum = 0;
@@ -9,69 +9,65 @@
 
 <h2>@ViewBag.Title.</h2>
 
+<hr />
+
 <p class="text-success">@ViewBag.StatusMessage</p>
 <div>
+    <h4>Order History</h4>    
 
-    <h4>User Details</h4>
-    <div>
-        @ViewBag.customerDetails.Orders
-    </div>
+    <table class="table">
+        <tr>
+            <th>
+                Order ID
+            </th>
+            <th>
+                OrderDate
+            </th>
+            <th>
+                Complete
+            </th>
+            <th>
+                Not On BackOrder
+            </th>
+            <th>
+                Total Amount
+            </th>
 
-    <h4>Order History</h4>
-    @*@if (ViewBag.customerOrders)
-    {
-        <p>You have no previous orders</p>
-    } else {*@
-        <table>
-            <tr>
-                <th>
-                    Order ID
-                </th>
-                <th>
-                    Order Date
-                </th>
-                <th>
-                    Complete
-                </th>
-                <th>
-                    Is Back Ordered
-                </th>
-                <th>
-                    Total Amount
-                </th>
-            </tr>
+        </tr>
         @foreach (var item in ViewBag.customerOrders)
             {
-                <tr>
-                    <td>
-                        @item.OrderID
-                    </td>
-                    <td>
-                        @item.OrderDate
-                    </td>
-                    <td>
-                        True
-                    </td>
-                    <td>
-                        @item.Complete
-                    </td>                    
-                    @*<td>
+            <tr>
+                <td>
+                    @item.OrderID
+                </td>
+                <td>
+                    @item.OrderDate
+                </td>
+                <td>
+                    @item.Complete
+                </td>
+                <td>
+                    @item.Complete
+                </td>
+                @*<td>
                         @ViewBag.orderQuantity
                     </td>
                     <td>
                         @ViewBag.orderPrice
-                    </td>*@                  
-                    @*<td>
+                    </td>*@
+                @*<td>
                         @(sum = (ViewBag.orderPrice * ViewBag.orderQuantity))
                     </td>*@
-                    <td>                                                  
-                         @ViewBag.orderPrice                
-                    </td>
-                </tr>
-            }
-        </table>
-    @*}*@
-    <h4>Change your account settings</h4>
+                <td>
+                    @ViewBag.orderPrice
+                </td>
+            </tr>
+        }
+
+
+    </table>
+
+    @*<h4>Change your account settings</h4>
     <hr />
     <dl class="dl-horizontal">       
 
@@ -87,9 +83,7 @@
                 @Html.ActionLink("Create", "SetPassword")
             }
             ]
-        </dd>
-        
-        
+        </dd>*@       
         
         
         @*<dt>External Logins:</dt>
