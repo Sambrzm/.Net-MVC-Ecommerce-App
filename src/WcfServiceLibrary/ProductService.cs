@@ -200,7 +200,7 @@ namespace WcfServiceLibrary
                                from p in dxe.Products
                                where od.ProductID == p.ProductID
                                where od.OrderID == id
-                               select  p.Price ).FirstOrDefault();
+                               select  p.Price * od.Quantity ).FirstOrDefault();
             return orderdetail;
         }
     }

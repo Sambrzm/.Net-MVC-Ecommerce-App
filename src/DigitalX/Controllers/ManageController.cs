@@ -77,19 +77,30 @@ namespace DigitalX.Controllers
 
             var username = User.Identity.Name;
             ViewBag.customerDetails = psc.findCustomer(username);
-            ViewBag.customerOrders = psc.findOrders(username);
-            var orderid = Session["orderID"] as Order;
-            var oid = orderid.OrderID;
+            //ViewBag.customerOrders = psc.findOrders(username);
+            var t1 = psc.findOrders(username);
+            foreach(var t in t1)
+            {
+                var t2 = t.OrderID;
+                //var orderid = Session["orderID"] as int?;
+                //if (orderid.HasValue)
+                //{
+                    //var oid = orderid.Value;
+                    //ViewBag.orderQuantity = psc.findOrderQty(t2);
+                    ViewBag.orderPrice = psc.findOrderPrice(t2);
+                //}
+            }
+            ViewBag.customerOrders = t1;
+
             //var list = psc.findOrders(username);
             //foreach(var item in list)
             //{
-            //    var id = 
+
             //}
 
-            ViewBag.orderQuantity = psc.findOrderQty(oid);
-            ViewBag.orderPrice = psc.findOrderPrice(oid);
 
-            
+
+
             return View(model);
         }
 

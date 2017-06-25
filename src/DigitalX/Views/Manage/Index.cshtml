@@ -1,8 +1,10 @@
 ﻿@model DigitalX.Models.IndexViewModel
 @{
     ViewBag.Title = "Manage";
-    int id = 0;
-    Session["orderid"] = id;
+    //int id = 1;
+    //Session["orderid"] = id;
+    decimal sum = 0;
+
 }
 
 <h2>@ViewBag.Title.</h2>
@@ -48,6 +50,9 @@
                         @item.OrderDate
                     </td>
                     <td>
+                        True
+                    </td>
+                    <td>
                         @item.Complete
                     </td>                    
                     @*<td>
@@ -55,16 +60,12 @@
                     </td>
                     <td>
                         @ViewBag.orderPrice
+                    </td>*@                  
+                    @*<td>
+                        @(sum = (ViewBag.orderPrice * ViewBag.orderQuantity))
                     </td>*@
-                       
-                    <td>
-                        @(ViewBag.orderPrice * @ViewBag.orderQuantity)
-                    </td>
-                    <td>
-                        @foreach(var i in ViewBag.customerOrders)
-                        {
-                            id = item.OrderID;
-                        }                        
+                    <td>                                                  
+                         @ViewBag.orderPrice                
                     </td>
                 </tr>
             }
