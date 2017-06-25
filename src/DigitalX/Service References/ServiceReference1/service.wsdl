@@ -65,6 +65,18 @@
   <wsdl:message name="IProductService_findOrders_OutputMessage">
     <wsdl:part name="parameters" element="tns:findOrdersResponse" />
   </wsdl:message>
+  <wsdl:message name="IProductService_findOrderQty_InputMessage">
+    <wsdl:part name="parameters" element="tns:findOrderQty" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_findOrderQty_OutputMessage">
+    <wsdl:part name="parameters" element="tns:findOrderQtyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_findOrderPrice_InputMessage">
+    <wsdl:part name="parameters" element="tns:findOrderPrice" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_findOrderPrice_OutputMessage">
+    <wsdl:part name="parameters" element="tns:findOrderPriceResponse" />
+  </wsdl:message>
   <wsdl:message name="IProductService_createAddress_InputMessage">
     <wsdl:part name="parameters" element="tns:createAddress" />
   </wsdl:message>
@@ -124,6 +136,14 @@
     <wsdl:operation name="findOrders">
       <wsdl:input wsaw:Action="http://tempuri.org/IProductService/findOrders" message="tns:IProductService_findOrders_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProductService/findOrdersResponse" message="tns:IProductService_findOrders_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="findOrderQty">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductService/findOrderQty" message="tns:IProductService_findOrderQty_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductService/findOrderQtyResponse" message="tns:IProductService_findOrderQty_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="findOrderPrice">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductService/findOrderPrice" message="tns:IProductService_findOrderPrice_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductService/findOrderPriceResponse" message="tns:IProductService_findOrderPrice_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="createAddress">
       <wsdl:input wsaw:Action="http://tempuri.org/IProductService/createAddress" message="tns:IProductService_createAddress_InputMessage" />
@@ -218,6 +238,24 @@
     </wsdl:operation>
     <wsdl:operation name="findOrders">
       <soap:operation soapAction="http://tempuri.org/IProductService/findOrders" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findOrderQty">
+      <soap:operation soapAction="http://tempuri.org/IProductService/findOrderQty" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findOrderPrice">
+      <soap:operation soapAction="http://tempuri.org/IProductService/findOrderPrice" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -1,6 +1,8 @@
 ﻿@model DigitalX.Models.IndexViewModel
 @{
     ViewBag.Title = "Manage";
+    int id = 0;
+    Session["orderid"] = id;
 }
 
 <h2>@ViewBag.Title.</h2>
@@ -47,12 +49,22 @@
                     </td>
                     <td>
                         @item.Complete
+                    </td>                    
+                    @*<td>
+                        @ViewBag.orderQuantity
                     </td>
                     <td>
-                        isbackordered
+                        @ViewBag.orderPrice
+                    </td>*@
+                       
+                    <td>
+                        @(ViewBag.orderPrice * @ViewBag.orderQuantity)
                     </td>
                     <td>
-                        @(item.Product.Price * item.OrderDetails.Quantity)
+                        @foreach(var i in ViewBag.customerOrders)
+                        {
+                            id = item.OrderID;
+                        }                        
                     </td>
                 </tr>
             }

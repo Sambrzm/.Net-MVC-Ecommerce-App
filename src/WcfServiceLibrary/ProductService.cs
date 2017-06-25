@@ -103,7 +103,7 @@ namespace WcfServiceLibrary
                         //    numOrders = pGroups.Count()
                         //}
                         //).OrderByDescending(x => x.numOrders).Distinct().Take(5).Cast<Product>();
-                        ).Take(5);
+                        ).Take(5).Distinct();
 
                 if (!top.Any())
                 {
@@ -155,7 +155,7 @@ namespace WcfServiceLibrary
         {
             var orders = (from o in dxe.Orders
                           from c in dxe.Customer
-                          from od in dxe.OrderDetails
+                          join od in dxe.OrderDetails on o.OrderID equals od.OrderID
                           where o.CustomerID == c.CustomerID
                           where c.UserName == username
                           select o);
@@ -178,6 +178,30 @@ namespace WcfServiceLibrary
                           orderby o.OrderID descending
                           select o.OrderID).FirstOrDefault();
             return orddid;
+        }
+
+        public int findOrderQty(int id)
+        {
+            var orderdetail = (from od in dxe.OrderDetails
+                               from c in dxe.Customer
+                               from o in dxe.Orders
+                               from p in dxe.Products
+                               where od.ProductID == p.ProductID
+                               where od.OrderID == id
+                               select od.Quantity).FirstOrDefault();
+            return orderdetail;
+        }
+
+        public decimal findOrderPrice(int id)
+        {
+            var orderdetail = (from od in dxe.OrderDetails
+                               from c in dxe.Customer
+                               from o in dxe.Orders
+                               from p in dxe.Products
+                               where od.ProductID == p.ProductID
+                               where od.OrderID == id
+                               select  p.Price ).FirstOrDefault();
+            return orderdetail;
         }
     }
 }

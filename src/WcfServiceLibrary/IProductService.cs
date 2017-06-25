@@ -36,7 +36,13 @@ namespace WcfServiceLibrary
         int createOrderDetails(OrderDetail request);
 
         [OperationContract]
-        List<Order> findOrders(string username);        
+        List<Order> findOrders(string username);
+
+        [OperationContract]
+        int findOrderQty(int id);
+
+        [OperationContract]
+        decimal findOrderPrice(int id);
 
         [OperationContract]
         int createAddress(Address request);

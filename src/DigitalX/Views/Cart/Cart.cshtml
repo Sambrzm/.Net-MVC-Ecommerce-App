@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Cart";
     bool check = true;
+    decimal subTotal = 0;
 }
 @using DigitalX.Controllers;
 
@@ -75,6 +76,16 @@
     }
 
 </table>
+<div>
+    <h4>Sub Total:</h4>
+    <h4>    
+    @foreach (var item in (List<Item>)Session["cart"])
+    {
+        subTotal += (item.Product.Price * item.Quantity);        
+    }
+    @subTotal
+    </h4>
+</div>
 <hr />
 @Html.ActionLink("Continue Shopping", "Products", "Home")
 @if (check == true)

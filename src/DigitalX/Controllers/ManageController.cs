@@ -74,9 +74,22 @@ namespace DigitalX.Controllers
                 Logins = await UserManager.GetLoginsAsync(userId),
                 BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
             };
+
             var username = User.Identity.Name;
             ViewBag.customerDetails = psc.findCustomer(username);
             ViewBag.customerOrders = psc.findOrders(username);
+            var orderid = Session["orderID"] as Order;
+            var oid = orderid.OrderID;
+            //var list = psc.findOrders(username);
+            //foreach(var item in list)
+            //{
+            //    var id = 
+            //}
+
+            ViewBag.orderQuantity = psc.findOrderQty(oid);
+            ViewBag.orderPrice = psc.findOrderPrice(oid);
+
+            
             return View(model);
         }
 

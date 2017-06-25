@@ -2661,6 +2661,18 @@ namespace DigitalX.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/findOrders", ReplyAction="http://tempuri.org/IProductService/findOrdersResponse")]
         System.Threading.Tasks.Task<DigitalX.ServiceReference1.Order[]> findOrdersAsync(string username);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/findOrderQty", ReplyAction="http://tempuri.org/IProductService/findOrderQtyResponse")]
+        int findOrderQty(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/findOrderQty", ReplyAction="http://tempuri.org/IProductService/findOrderQtyResponse")]
+        System.Threading.Tasks.Task<int> findOrderQtyAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/findOrderPrice", ReplyAction="http://tempuri.org/IProductService/findOrderPriceResponse")]
+        decimal findOrderPrice(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/findOrderPrice", ReplyAction="http://tempuri.org/IProductService/findOrderPriceResponse")]
+        System.Threading.Tasks.Task<decimal> findOrderPriceAsync(int id);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/createAddress", ReplyAction="http://tempuri.org/IProductService/createAddressResponse")]
         int createAddress(DigitalX.ServiceReference1.Address request);
         
@@ -2775,6 +2787,22 @@ namespace DigitalX.ServiceReference1 {
         
         public System.Threading.Tasks.Task<DigitalX.ServiceReference1.Order[]> findOrdersAsync(string username) {
             return base.Channel.findOrdersAsync(username);
+        }
+        
+        public int findOrderQty(int id) {
+            return base.Channel.findOrderQty(id);
+        }
+        
+        public System.Threading.Tasks.Task<int> findOrderQtyAsync(int id) {
+            return base.Channel.findOrderQtyAsync(id);
+        }
+        
+        public decimal findOrderPrice(int id) {
+            return base.Channel.findOrderPrice(id);
+        }
+        
+        public System.Threading.Tasks.Task<decimal> findOrderPriceAsync(int id) {
+            return base.Channel.findOrderPriceAsync(id);
         }
         
         public int createAddress(DigitalX.ServiceReference1.Address request) {
