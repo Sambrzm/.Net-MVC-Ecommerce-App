@@ -154,5 +154,8 @@ namespace DigitalX.Models
         [Required]
         [Display(Name = "Country")]
         public string Country { get; set; }
+        [Required]
+        [Display(Name = "Home or Bussiness Address")]
+        public int AddressType { get; set; }
     }
 }

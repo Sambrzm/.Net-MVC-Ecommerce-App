@@ -2672,6 +2672,18 @@ namespace DigitalX.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/findAllAddress", ReplyAction="http://tempuri.org/IProductService/findAllAddressResponse")]
         System.Threading.Tasks.Task<DigitalX.ServiceReference1.Address[]> findAllAddressAsync(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/findAddid", ReplyAction="http://tempuri.org/IProductService/findAddidResponse")]
+        int findAddid();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/findAddid", ReplyAction="http://tempuri.org/IProductService/findAddidResponse")]
+        System.Threading.Tasks.Task<int> findAddidAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/findOrdid", ReplyAction="http://tempuri.org/IProductService/findOrdidResponse")]
+        int findOrdid();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/findOrdid", ReplyAction="http://tempuri.org/IProductService/findOrdidResponse")]
+        System.Threading.Tasks.Task<int> findOrdidAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -2779,6 +2791,22 @@ namespace DigitalX.ServiceReference1 {
         
         public System.Threading.Tasks.Task<DigitalX.ServiceReference1.Address[]> findAllAddressAsync(string username) {
             return base.Channel.findAllAddressAsync(username);
+        }
+        
+        public int findAddid() {
+            return base.Channel.findAddid();
+        }
+        
+        public System.Threading.Tasks.Task<int> findAddidAsync() {
+            return base.Channel.findAddidAsync();
+        }
+        
+        public int findOrdid() {
+            return base.Channel.findOrdid();
+        }
+        
+        public System.Threading.Tasks.Task<int> findOrdidAsync() {
+            return base.Channel.findOrdidAsync();
         }
     }
 }

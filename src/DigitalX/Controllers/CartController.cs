@@ -106,27 +106,53 @@ namespace DigitalX.Controllers
         public bool backord { get; set; }
         public int prodid { get; set; }
         public int prodqty { get; set; }
+        public Address addy { get; set; }
 
-        [HttpPost]
-        public ActionResult createOrder(OrderViewModel model)
+
+        public ActionResult createOrder()
         {
+            
+
             if (ModelState.IsValid)
             {
+                addid = psc.findAddid();
+                var username = User.Identity.Name;
+                var cust = psc.findCustomer(username);
+                custid = cust.CustomerID;
+
                 var order = new Order();
                 order.CustomerID = custid;                
                 order.OrderDate = DateTime.Now;
                 order.Complete = backord;
+                order.AddressID = addid;
 
                 psc.createOrder(order);
 
-                ordid = psc.createOrder(order);
-
+                ordid = psc.findOrdid();
                 
-                List<Item> cart = (List<Item>)Session["cart"];
-                Product product = (Product)Session["cart"];
-                prodid = product.ProductID;
-                int index = isExisting(prodid);
-                prodqty = cart[index].Quantity;
+                List<Item> cart = (List<Item>)Session["cart"];                
+
+                foreach(var item in cart)
+                {
+                    //Item res = new Item();
+                    //res.Product = item.Product;
+                    //res.Quantity = item.Quantity;
+
+                    prodid = item.Product.ProductID;
+                    prodqty = item.Quantity;
+
+                    var orderDetails = new OrderDetail();
+                    orderDetails.OrderID = ordid;
+                    orderDetails.ProductID = prodid;
+                    orderDetails.Quantity = prodqty;
+
+                    psc.createOrderDetails(orderDetails);
+                }
+
+                //Product product = (Product)Session["cart"];
+                //prodid = product.ProductID;
+                //int index = isExisting(prodid);
+                //prodqty = cart[index].Quantity;
 
                 //return RedirectToAction("invoice", "Cart");
                 //    }
@@ -138,12 +164,13 @@ namespace DigitalX.Controllers
                 //{
                 //    if (ModelState.IsValid)
                 //    {
-                var orderDetails = new OrderDetail();
-                orderDetails.OrderID = ordid;
-                orderDetails.ProductID = prodid;
-                orderDetails.Quantity = prodqty;
 
-                psc.createOrderDetails(orderDetails);
+                //var orderDetails = new OrderDetail();
+                //orderDetails.OrderID = ordid;
+                //orderDetails.ProductID = prodid;
+                //orderDetails.Quantity = prodqty;
+
+                //psc.createOrderDetails(orderDetails);
                 return RedirectToAction("invoice", "Cart");
             }
             return RedirectToAction("checkout", "Cart");
@@ -152,8 +179,8 @@ namespace DigitalX.Controllers
         public ActionResult invoice()
         {
             var username = User.Identity.Name;
-            Address address = (Address)Session["address"];
-            ViewBag.displayAddress = address;
+            addy = (Address)Session["address"];
+            ViewBag.displayAddress = addy;
             
 
 
@@ -172,18 +199,24 @@ namespace DigitalX.Controllers
         {
             if (ModelState.IsValid)
             {
+                //var username = User.Identity.Name;
+                //Customer cust = psc.findCustomer(username);
+
+
                 var address = new Address();
                 address.Street = model.Street;
                 address.Suburb = model.Suburb;
                 address.City = model.City;
                 address.Country = model.City;
                 address.PostalCode = model.PostalCode;
+                address.AddressType = 1;               
 
-                psc.createAddress(address);
+                psc.createAddress(address);                               
+                
 
                 Session["address"] = address;
 
-                return RedirectToAction("invoice", "Cart");
+                return RedirectToAction("createOrder", "Cart");
             }
             return View(model);
         }

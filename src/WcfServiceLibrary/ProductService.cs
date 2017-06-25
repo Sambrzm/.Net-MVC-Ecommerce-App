@@ -20,7 +20,7 @@ namespace WcfServiceLibrary
                 CustomerID = request.CustomerID,
                 AddressID = request.AddressID,
                 OrderDate = request.OrderDate,
-                Complete = request.Complete
+                Complete = request.Complete,
             };
             dxe.Orders.Add(o);            
             dxe.SaveChanges();
@@ -131,7 +131,9 @@ namespace WcfServiceLibrary
                 Suburb = request.Suburb,
                 City = request.City,
                 PostalCode = request.PostalCode,
-                Country = request.Country
+                Country = request.Country,                
+                AddressType = request.AddressType,
+                Customers = request.Customers
             };
             dxe.Addresses.Add(a);
             dxe.SaveChanges();            
@@ -160,6 +162,22 @@ namespace WcfServiceLibrary
             return orders.ToList();
         }
 
-        
+        public int findAddid()
+        {
+            //return dxe.Addresses.FirstOrDefault()
+
+            var addid = (from a in dxe.Addresses
+                         orderby a.AddressID descending
+                         select a.AddressID).FirstOrDefault();
+            return addid;
+        }
+
+        public int findOrdid()
+        {
+            var orddid = (from o in dxe.Orders
+                          orderby o.OrderID descending
+                          select o.OrderID).FirstOrDefault();
+            return orddid;
+        }
     }
 }

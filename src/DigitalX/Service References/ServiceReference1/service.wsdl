@@ -77,6 +77,18 @@
   <wsdl:message name="IProductService_findAllAddress_OutputMessage">
     <wsdl:part name="parameters" element="tns:findAllAddressResponse" />
   </wsdl:message>
+  <wsdl:message name="IProductService_findAddid_InputMessage">
+    <wsdl:part name="parameters" element="tns:findAddid" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_findAddid_OutputMessage">
+    <wsdl:part name="parameters" element="tns:findAddidResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_findOrdid_InputMessage">
+    <wsdl:part name="parameters" element="tns:findOrdid" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_findOrdid_OutputMessage">
+    <wsdl:part name="parameters" element="tns:findOrdidResponse" />
+  </wsdl:message>
   <wsdl:portType name="IProductService">
     <wsdl:operation name="findAll">
       <wsdl:input wsaw:Action="http://tempuri.org/IProductService/findAll" message="tns:IProductService_findAll_InputMessage" />
@@ -120,6 +132,14 @@
     <wsdl:operation name="findAllAddress">
       <wsdl:input wsaw:Action="http://tempuri.org/IProductService/findAllAddress" message="tns:IProductService_findAllAddress_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProductService/findAllAddressResponse" message="tns:IProductService_findAllAddress_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="findAddid">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductService/findAddid" message="tns:IProductService_findAddid_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductService/findAddidResponse" message="tns:IProductService_findAddid_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="findOrdid">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductService/findOrdid" message="tns:IProductService_findOrdid_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductService/findOrdidResponse" message="tns:IProductService_findOrdid_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IProductService" type="tns:IProductService">
@@ -216,6 +236,24 @@
     </wsdl:operation>
     <wsdl:operation name="findAllAddress">
       <soap:operation soapAction="http://tempuri.org/IProductService/findAllAddress" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findAddid">
+      <soap:operation soapAction="http://tempuri.org/IProductService/findAddid" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findOrdid">
+      <soap:operation soapAction="http://tempuri.org/IProductService/findOrdid" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

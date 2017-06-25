@@ -43,6 +43,12 @@ namespace WcfServiceLibrary
 
         [OperationContract]
         List<Address> findAllAddress(string username);
+
+        [OperationContract]
+        int findAddid();
+
+        [OperationContract]
+        int findOrdid();
         
     }
 
